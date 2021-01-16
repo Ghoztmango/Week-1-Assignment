@@ -22,6 +22,8 @@ const mapDispatchToProps = {
 
 function RenderCampsite(props) {
 
+    const recognizeComment = ({dx}) => (dx > 200) ? true : false;
+
     const {campsite} = props;
 
     const view = React.createRef();
@@ -54,6 +56,9 @@ function RenderCampsite(props) {
                     ],
                     { cancelable: false }
                 );
+            }
+            if (recognizeComment(gestureState)) {
+                props.onShowModal()
             }
             return true;
         }
